@@ -89,7 +89,7 @@ router.get('/campus/:id', async (req, res) => {
 router.get('/docent', async (req, res) => {
     console.log('./docent route called');
     try {
-        res.json(await Docent.find().populate());
+        res.json(await Docent.find().populate('campussen'));
     } catch(e) {
         console.log(e);
         res.sendStatus(500);
