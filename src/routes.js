@@ -11,7 +11,7 @@ router.param('id', (req, res, next, id) => {
 router.get('/', (req, res) => {
     console.log('/ route called');
     res.send(
-        '<h1>Welcome to my API, these are the available routes:</h1>'
+        '<body><h1>Welcome to my API, these are the available routes:</h1>'
         + '<h2>/</h2>'
         + 'Where you are right now'
         + '<hr/>'
@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
         + '<hr/>'
         + '<h2>/campus/delete/:id</h2>'
         + 'Delete campus by id'
-        + '<hr/>'
+        + '<hr/></body>'
         )
 });
 
@@ -89,7 +89,7 @@ router.get('/campus/:id', async (req, res) => {
 router.get('/docent', async (req, res) => {
     console.log('./docent route called');
     try {
-        res.json(await Docent.find());
+        res.json(await Docent.find().populate());
     } catch(e) {
         console.log(e);
         res.sendStatus(500);
