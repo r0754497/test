@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Campus = require('./models/campus');
+const Docent = require('./models/docent');
 
 router.param('id', (req, res, next, id) => {
     req.params.id = id;
@@ -31,6 +32,9 @@ router.get('/', (req, res) => {
         + '<hr/>'
         )
 });
+
+
+
 
 router.get('/campus', async (req, res) => {
     console.log('/campus route called');
@@ -76,6 +80,16 @@ router.get('/campus/:id', async (req, res) => {
     console.log('Campus/:id has been called')
     try {
         res.send(await Campus.findById(req.params.id));
+    } catch(e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
+router.get('/docent', async (req, res) => {
+    console.log('./docent route called');
+    try {
+        res.json(await Docent.find());
     } catch(e) {
         console.log(e);
         res.sendStatus(500);
