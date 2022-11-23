@@ -22,7 +22,7 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-        name: upload artifact with JSON results
+      - name: upload artifact with JSON results
         uses: actions/upload-artifact@v3
         with:
           name: output
