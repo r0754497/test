@@ -22,8 +22,10 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - name: upload artifact with JSON results
-        uses: actions/upload-artifact@v3
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.1
         with:
-          name: output
-          path: output.json
+          # Artifact name
+          name: upload
+          # Destination path
+          path: upload.json
