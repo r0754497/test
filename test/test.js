@@ -5,9 +5,10 @@ describe('get campus', () => {
         await request('https://campus-api-example.netlify.app')
         .get('/.netlify/functions/api/campus')
         .expect(200)
-        .expect('Content-Type', 'application/json; charset-utf-8')
+        .expect('Content-Type', 'application/json; charset=utf-8')
         .expect((res) => {
             console.log(res.body[0])
+            console.log("test");
         })
     });
 });
